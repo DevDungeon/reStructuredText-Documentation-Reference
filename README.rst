@@ -567,19 +567,19 @@ Translator class heirarchy for HTML translators:
 
 
 
----
+.. ---
 
-Things this custom writer should do:
-- Reduce headings one level, so the top level sections are h2's
-- Eliminate the Title and subtitle output (or output it as html comment)
-- Eliminate all the HTML boilerplate, stylesheets, and JS includes
-- don't add any extra classes/ids that aren't needed
-- for code blocks, wrap in pre+code
-- collect links and create a ReferenceLinks section? (a directive??)
-- links should open in _blank target, unless they are relative links within the same domain
+.. Things this custom writer should do:
+.. - Reduce headings one level, so the top level sections are h2's
+.. - Eliminate the Title and subtitle output (or output it as html comment)
+.. - Eliminate all the HTML boilerplate, stylesheets, and JS includes
+.. - don't add any extra classes/ids that aren't needed
+.. - for code blocks, wrap in pre+code
+.. - collect links and create a ReferenceLinks section? (a directive??)
+.. - links should open in _blank target, unless they are relative links within the same domain
 
 
----
+.. ---
 
 
 You need to define a custom Writer and Translator. The translator defines the
@@ -587,7 +587,7 @@ logic used by the writer on how to output/wrap each node.
 You can subclass an existing writer. These are
 some of the existing writer and translator classes related to HTML output.
 
----
+
 
 Note that this is only a few of the writer classes, there are several other
 subclasses in the ``docutils.writers`` package, but these are the ones
@@ -596,11 +596,6 @@ subclass any one of these, depending on how much logic you want to inherit.
 We should choose wether to subclass the lowest level class like
 ``docutils.writers.Writer`` or the highest level one available in the
 ``html5_polyglot`` module, ``docutils.writers.html5_polyglot.Writer``.
-
-
-
----
-
 
 
 
@@ -845,27 +840,9 @@ which translator to use. The bulk of the logic lives in the translator class.
 
 
 
-
-
-
-
-
-
 =========================
 Create a custom directive
 =========================
-
-
-need these if they don't exist
-- date last modified
-- external links open to _blank target
-- summary of all links at the bottom
-- tag listing
-- tag cloud
-- related posts
-
-
-
 
 Directives are the special lines that start with two dots and are treated
 as special functions. Some examples we've already see are the table of contents
@@ -908,8 +885,6 @@ Minimal example - extending an existing/base directive or
 full example - actually do something
 
 
-
-
 Use an example
 Pygments is a Python package for highlighting source code.
 There is a ``..code::`` directive that uses Pygment.
@@ -950,11 +925,6 @@ Or from the interactive python interpreter::
 
 Refer to those sources for a full list of options. We'll look at a simple
 example to get you started.
-
-
-
-
-
 
 
 # References:
@@ -1010,12 +980,6 @@ Custom directive::
 
 
 
-
-
-
-
-
-
 ------------
 Base classes
 ------------
@@ -1052,7 +1016,6 @@ Full custom directive
 
 The previous example was a minimal skeleton.
 This example will actually do something.
-
 
 
 
@@ -1131,23 +1094,3 @@ sphinx features
 - doc test, doc coverage?
   
 
-github: will auto render .rst file as best it can when viewing on website
-readthedocs will build and host your sphinx project automatically from your github repo
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-add date directive examples
-Page built on:
-Last modified:
