@@ -72,14 +72,6 @@ http://docutils.sourceforge.net/docs/index.html
 
 
 
-
-
-
-
-
-
-
-
 ============================
 Create a basic .rst document
 ============================
@@ -275,6 +267,21 @@ https://github.com/jgm/pandoc/releases.
   directory contains the ``pandoc`` executable. Alternatively, in Debian based
   distributions, there is a ``.deb`` package available for download on that
   GitHub releases page.
+
+---------------
+Readthedocs.org
+---------------
+
+The website https://readthedocs.org/ is a great website that will build and host
+your documentation for you. You can use Sphinx, Mkdcocs, or generate your own
+documents. I recommend using Sphinx. When you use ``sphinx-quickstart`` to 
+generate a ``docs/`` directory in your project, ReadTheDocs.org will know what to do.
+Sign up and tell ReadTheDocs.org about your repository, and set up a webhook
+to automatically build and host your documentation any time there is a git push.
+
+They will host multiple versions of documentation, you can use their theme
+or custom themes, and it even makes PDF and ePub versions available.
+
 
 ===============
 Syntax examples
@@ -599,7 +606,6 @@ We should choose wether to subclass the lowest level class like
 
 
 
-
 --------------------------
 Minimal custom HTML writer
 --------------------------
@@ -609,7 +615,7 @@ case, we are simply inheriting the behavior of the ``html5_polyglot`` writer
 and translator that come with ``docutils`` package. We aren't modifying
 any of the behavior yet, but it's a good starting place.
 
-.. code:: python
+Custom writer example::
 
   """Minimal writer/translator for customizing docutils output"""
   from docutils.writers import html5_polyglot
@@ -645,7 +651,7 @@ that is in charge or outputting those header tags. I found it in
 a ``visit_title()`` method in my own translator by copy and pasting the original
 one as a starting place. Here is the full code used.
 
-.. code:: python
+Custom HTML writer example::
 
   """
   A custom docutils writer that will convert reStructuredText (RST) to html5,
@@ -833,13 +839,6 @@ of how to use it. The ``Writer`` class is very simple, and it just specifies
 which translator to use. The bulk of the logic lives in the translator class.
 
 
-
-
-
-
-
-
-
 =========================
 Create a custom directive
 =========================
@@ -977,12 +976,10 @@ Custom directive::
   print(html_output)
 
 
-
-
-
 ------------
 Base classes
 ------------
+
 ``docutils.parsers.rst.Directive``
 
 ------------------------
@@ -1000,15 +997,16 @@ Once you have your directive registered, anytime you call one of the
 ``docutils.core.publish_*`` functions, it will process your directive if
 it sees on in the reStructuredText it parses.
 
-```
-class MyCustomDirective(Directive)
-  run():
-    print('it ran!')
-    return(my custom node? a text node? a code bloc node? an image? etc)
-    process without outputting anything?
+Custom directive example::
 
-directives.register('shortcutname', MyCustomDirective)
-```
+  class MyCustomDirective(Directive)
+    run():
+      print('it ran!')
+      return(my custom node? a text node? a code bloc node? an image? etc)
+      process without outputting anything?
+
+  directives.register('shortcutname', MyCustomDirective)
+
 
 ---------------------
 Full custom directive
